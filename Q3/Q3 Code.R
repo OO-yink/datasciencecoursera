@@ -2,10 +2,12 @@
 ## functions do
 
 ## Write a short comment describing this function
+# This Function creates a matrix. it is assumed that the input
+# matrix can be inverted
 
 makeCacheMatrix <- function(x = matrix()) { # assume that the matrix supplied is always invertible.
   i <- NULL
-  set <- function(y) { # Set value of the matrix with another functon
+  set <- function(y) { # Set value of the matrix with another function
     x <<- y
     i <<- NULL
   }
@@ -20,6 +22,8 @@ makeCacheMatrix <- function(x = matrix()) { # assume that the matrix supplied is
 }
 
 ## Write a short comment describing this function
+# This function solves for the inverse of a matrix and caches the result for 
+# future queries to save time. 
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
@@ -28,8 +32,8 @@ cacheSolve <- function(x, ...) {
     message("getting cached data")
     return(i) # Return cached value
   }
-  data <- x$get() # initiated only if a cache value if not avaliable.
-  i <- solve(data, ...) # Compute solve
-  x$setinverse(i) # et nverse
+  data <- x$get() # initiated only if a cache value if not available.
+  i <- solve(data, ...) # Compute solve for data provided
+  x$setinverse(i) # set inverse
   i
 }
